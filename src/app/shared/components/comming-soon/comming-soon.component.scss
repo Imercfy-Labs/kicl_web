@@ -1,0 +1,34 @@
+@import '.././../../../styles/variables.scss';
+
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: $primary-dark;
+  font-family: $font-family-base;
+  text-align: center;
+  border: 2px dashed $primary-light;
+  border-radius: $border-radius-lg;
+  background-color: $gray-100;
+  box-shadow: $shadow-sm;
+  max-width: 400px;
+  margin: 2rem auto;
+
+  .icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-bottom: 0.5rem;
+    font-weight: $font-weight-bold;
+    color: $primary;
+  }
+
+  p {
+    font-size: 1rem;
+    color: $gray-700;
+  }
+}

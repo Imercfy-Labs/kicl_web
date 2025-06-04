@@ -1,0 +1,110 @@
+// Color system
+$primary: #3846B1;
+$primary-light: #5664C8;
+$primary-dark: #2C379A;
+
+$secondary: #2C3E50;
+$secondary-light: #34495E;
+$secondary-dark: #1A252F;
+
+$accent: #3498DB;
+$accent-light: #5DADE2;
+$accent-dark: #1F618D;
+
+$success: #2ECC71;
+$warning: #F39C12;
+$error: #E74C3C;
+$info: #3498DB;
+
+// Neutral colors
+$white: #FFFFFF;
+$gray-50: #FAFAFA;
+$gray-100: #F8F9FA;
+$gray-200: #E9ECEF;
+$gray-300: #DEE2E6;
+$gray-400: #CED4DA;
+$gray-500: #ADB5BD;
+$gray-600: #6C757D;
+$gray-700: #495057;
+$gray-800: #343A40;
+$gray-900: #212529;
+$black: #000000;
+
+// Typography
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-size-base: 1rem;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+$line-height-base: 1.5;
+$line-height-heading: 1.2;
+
+// Spacing
+$spacer: 8px;
+$spacers: (
+  0: 0,
+  1: $spacer,
+  2: $spacer * 2,
+  3: $spacer * 3,
+  4: $spacer * 4,
+  5: $spacer * 5,
+  6: $spacer * 6,
+  7: $spacer * 7,
+  8: $spacer * 8
+);
+
+// Border
+$border-radius-sm: 4px;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+$border-width: 1px;
+
+// Shadow
+$shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+$shadow: 0 4px 6px rgba(0,0,0,0.1);
+$shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// Transitions
+$transition-base: all 0.2s ease-in-out;
+$transition-fade: opacity 0.15s linear;
+
+.chip-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 1rem 0;
+  white-space: nowrap;
+  gap: 0.75rem;
+}
+
+.chip {
+  padding: 0.4rem 1.2rem;
+  border: none;
+  border-radius: 9999px;
+  background-color: #5664C8;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: #2C379A;
+  }
+
+  &.active {
+    background-color: #3846B1;
+    color: white;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  }
+}

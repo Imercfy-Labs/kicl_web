@@ -1,0 +1,48 @@
+<app-layout>
+    <div style="display: flex; overflow-x: auto; padding: 1rem 0; white-space: nowrap; gap: 0.75rem;">
+        <button *ngFor="let tree of products" (click)="selectTree(tree)" [ngStyle]="{
+        padding: '0.4rem 1.2rem',
+        border: 'none',
+        'border-radius': '9999px',
+        'background-color': tree === selectedTree ? '#3846B1' : '#5664C8',
+        color: 'white',
+        'font-size': '0.95rem',
+        'font-weight': '500',
+        cursor: 'pointer',
+        'box-shadow': tree === selectedTree ? '0 10px 15px rgba(0,0,0,0.1)' : '0 4px 6px rgba(0,0,0,0.1)',
+        transition: 'background-color 0.3s ease, color 0.3s ease',
+        'flex-shrink': '0'
+      }">
+            {{ tree.TreeCode }}
+        </button>
+    </div>
+
+    <div *ngIf="selectedTree" style="margin-top: 1rem;">
+        <h3>{{ selectedTree.ProductDescription }}</h3>
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
+            <thead>
+                <tr>
+                    <th style="text-align: left; padding: 0.5rem; border: 1px solid #ccc;">Item Name</th>
+                    <th style="text-align: left; padding: 0.5rem; border: 1px solid #ccc;">Item Code</th>
+                    <th style="text-align: left; padding: 0.5rem; border: 1px solid #ccc;">Quantity</th>
+                    <th style="text-align: left; padding: 0.5rem; border: 1px solid #ccc;">Warehouse</th>
+                    <th style="text-align: left; padding: 0.5rem; border: 1px solid #ccc;">Price</th>
+                    <th style="text-align: left; padding: 0.5rem; border: 1px solid #ccc;">Currency</th>
+                    <th style="text-align: left; padding: 0.5rem; border: 1px solid #ccc;">Issue Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of selectedTree.ProductTreeLines" style="border: 1px solid #ccc;">
+                    <td style="padding: 0.5rem; border: 1px solid #ccc;">{{ item.ItemName }}</td>
+                    <td style="padding: 0.5rem; border: 1px solid #ccc;">{{ item.ItemCode }}</td>
+                    <td style="padding: 0.5rem; border: 1px solid #ccc;">{{ item.Quantity }}</td>
+                    <td style="padding: 0.5rem; border: 1px solid #ccc;">{{ item.Warehouse }}</td>
+                    <td style="padding: 0.5rem; border: 1px solid #ccc;">{{ item.Price }}</td>
+                    <td style="padding: 0.5rem; border: 1px solid #ccc;">{{ item.Currency }}</td>
+                    <td style="padding: 0.5rem; border: 1px solid #ccc;">{{ item.IssueMethod }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</app-layout>

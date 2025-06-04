@@ -1,0 +1,196 @@
+<div class="sales-persons-page">
+  <div class="page-header">
+    <h1>Sales Persons</h1>
+  </div>
+
+  <div class="form-card">
+    <form [formGroup]="salesPersonForm" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Name</label>
+          <input 
+            type="text" 
+            formControlName="name"
+            class="form-control" 
+            [class.is-invalid]="salesPersonForm.get('name')?.touched && salesPersonForm.get('name')?.invalid"
+            placeholder="Enter name">
+          <div class="invalid-feedback" *ngIf="salesPersonForm.get('name')?.touched && salesPersonForm.get('name')?.invalid">
+            Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input 
+            type="email" 
+            formControlName="email"
+            class="form-control" 
+            [class.is-invalid]="salesPersonForm.get('email')?.touched && salesPersonForm.get('email')?.invalid"
+            placeholder="Enter email">
+          <div class="invalid-feedback" *ngIf="salesPersonForm.get('email')?.touched && salesPersonForm.get('email')?.invalid">
+            <span *ngIf="salesPersonForm.get('email')?.errors?.['required']">Email is required</span>
+            <span *ngIf="salesPersonForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input 
+            type="password" 
+            formControlName="password"
+            class="form-control" 
+            [class.is-invalid]="salesPersonForm.get('password')?.touched && salesPersonForm.get('password')?.invalid"
+            placeholder="Enter password">
+          <div class="invalid-feedback" *ngIf="salesPersonForm.get('password')?.touched && salesPersonForm.get('password')?.invalid">
+            <span *ngIf="salesPersonForm.get('password')?.errors?.['required']">Password is required</span>
+            <span *ngIf="salesPersonForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input 
+            type="tel" 
+            formControlName="phone"
+            class="form-control" 
+            [class.is-invalid]="salesPersonForm.get('phone')?.touched && salesPersonForm.get('phone')?.invalid"
+            placeholder="Enter phone number">
+          <div class="invalid-feedback" *ngIf="salesPersonForm.get('phone')?.touched && salesPersonForm.get('phone')?.invalid">
+            Phone number is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Branch</label>
+          <select 
+            formControlName="branch"
+            class="form-control"
+            [class.is-invalid]="salesPersonForm.get('branch')?.touched && salesPersonForm.get('branch')?.invalid">
+            <option value="" disabled>Select branch</option>
+            <option value="branch1">Branch 1</option>
+            <option value="branch2">Branch 2</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="salesPersonForm.get('branch')?.touched && salesPersonForm.get('branch')?.invalid">
+            Branch is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Territory</label>
+          <input 
+            type="text" 
+            formControlName="territory"
+            class="form-control" 
+            [class.is-invalid]="salesPersonForm.get('territory')?.touched && salesPersonForm.get('territory')?.invalid"
+            placeholder="Enter territory">
+          <div class="invalid-feedback" *ngIf="salesPersonForm.get('territory')?.touched && salesPersonForm.get('territory')?.invalid">
+            Territory is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Status</label>
+          <select 
+            formControlName="status"
+            class="form-control"
+            [class.is-invalid]="salesPersonForm.get('status')?.touched && salesPersonForm.get('status')?.invalid">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="salesPersonForm.get('status')?.touched && salesPersonForm.get('status')?.invalid">
+            Status is required
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          class="btn-primary" 
+          [disabled]="isSubmitting">
+          <i class="fas fa-save"></i>
+          <span *ngIf="!isSubmitting">Save Sales Person</span>
+          <span *ngIf="isSubmitting">Saving...</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Sales Persons List</h2>
+      <div class="table-actions">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search sales persons...">
+        </div>
+        <div class="view-selector">
+          <span>View All</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Branch</th>
+          <th>Territory</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of salesPersons">
+          <td>{{person.name}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.phone}}</td>
+          <td>{{person.branch}}</td>
+          <td>{{person.territory}}</td>
+          <td>
+            <span [class]="'status-badge ' + person.status.toLowerCase()">
+              {{person.status}}
+            </span>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn-icon" title="Edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn-icon" title="Delete">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="table-footer">
+      <div class="rows-per-page">
+        <span>Rows per page</span>
+        <select [(ngModel)]="rowsPerPage">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+      <div class="pagination">
+        <span>Page {{currentPage}} of {{totalPages}}</span>
+        <div class="pagination-controls">
+          <button class="btn-icon"><i class="fas fa-angle-double-left"></i></button>
+          <button class="btn-icon"><i class="fas fa-angle-left"></i></button>
+          <button class="btn-icon"><i class="fas fa-angle-right"></i></button>
+          <button class="btn-icon"><i class="fas fa-angle-double-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

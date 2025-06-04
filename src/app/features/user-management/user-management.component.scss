@@ -1,0 +1,215 @@
+@import '../../../styles/variables.scss';
+
+.user-management-page {
+  padding: calc(var(--spacer) * 4);
+
+  h1 {
+    font-size: 1.5rem;
+    color: var(--gray-900);
+    margin-bottom: calc(var(--spacer) * 4);
+  }
+}
+
+.roles-section {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacer) * 4);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: calc(var(--spacer) * 4);
+
+  h2 {
+    font-size: 1.25rem;
+    color: var(--gray-900);
+    margin-bottom: calc(var(--spacer) * 3);
+  }
+}
+
+.roles-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  gap: calc(var(--spacer) * 3);
+  align-items: flex-end;
+}
+
+.form-group {
+  .form-control {
+    width: 100%;
+    padding: calc(var(--spacer) * 1.5);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    color: var(--gray-700);
+
+    &::placeholder {
+      color: var(--gray-500);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+    }
+  }
+}
+
+.btn-save {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: calc(var(--spacer) * 1.5) calc(var(--spacer) * 3);
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--primary-dark);
+  }
+}
+
+.user-list-section {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacer) * 3);
+  border-bottom: 1px solid var(--gray-200);
+
+  h2 {
+    font-size: 1.25rem;
+    color: var(--gray-900);
+    margin: 0;
+  }
+}
+
+.view-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer);
+  padding: calc(var(--spacer) * 1.5) calc(var(--spacer) * 2);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+
+  span {
+    color: var(--gray-700);
+    font-size: 0.875rem;
+  }
+
+  i {
+    color: var(--gray-500);
+    font-size: 0.75rem;
+  }
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: calc(var(--spacer) * 2);
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  th {
+    color: var(--gray-700);
+    font-weight: 500;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  td {
+    color: var(--gray-800);
+    border-bottom: 1px solid var(--gray-100);
+  }
+}
+
+.btn-action {
+  background: none;
+  border: none;
+  color: var(--gray-700);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: calc(var(--spacer) * 0.5);
+  border-radius: var(--border-radius);
+
+  &:hover {
+    background: var(--gray-100);
+  }
+}
+
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacer) * 2);
+  border-top: 1px solid var(--gray-200);
+}
+
+.rows-per-page {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer);
+  color: var(--gray-700);
+  font-size: 0.875rem;
+
+  select {
+    padding: calc(var(--spacer) * 0.5) var(--spacer);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    color: var(--gray-700);
+    font-size: 0.875rem;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacer) * 2);
+  color: var(--gray-700);
+  font-size: 0.875rem;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: var(--spacer);
+
+  button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    background: var(--white);
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--gray-50);
+      color: var(--primary);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .user-management-page {
+    padding: calc(var(--spacer) * 2);
+  }
+
+  .roles-form {
+    grid-template-columns: 1fr;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+}

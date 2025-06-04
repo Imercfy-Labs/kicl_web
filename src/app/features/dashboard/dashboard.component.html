@@ -1,0 +1,132 @@
+<app-layout>
+  <div class="dashboard-content">
+    <!-- Charts Section -->
+    <div class="charts-grid">
+      <!-- Total Orders -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2>Total Orders</h2>
+          <div class="chart-filters">
+            <button [class.active]="selectedPeriod === 'last3Months'" (click)="updatePeriod('last3Months')">last 3 Months</button>
+            <button [class.active]="selectedPeriod === 'last30Months'" (click)="updatePeriod('last30Months')">last 30 Months</button>
+            <button [class.active]="selectedPeriod === 'last7Months'" (click)="updatePeriod('last7Months')">last 7 Months</button>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas baseChart
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            type="line">
+          </canvas>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot delivered"></span>
+            <span>Delivered</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot remaining"></span>
+            <span>Remaining</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stock Summary -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2>Stock Summary</h2>
+          <div class="chart-filters">
+            <button [class.active]="selectedStockPeriod === 'last3Months'" (click)="updateStockPeriod('last3Months')">last 3 Months</button>
+            <button [class.active]="selectedStockPeriod === 'last30Months'" (click)="updateStockPeriod('last30Months')">last 30 Months</button>
+            <button [class.active]="selectedStockPeriod === 'last7Months'" (click)="updateStockPeriod('last7Months')">last 7 Months</button>
+          </div>
+        </div>
+        <div class="stock-gauge">
+          <div class="gauge-circle">
+            <div class="gauge-value">150</div>
+          </div>
+          <div class="gauge-label">Stock 01</div>
+        </div>
+      </div>
+
+      <!-- Dealer Outstanding -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2>Dealer Outstanding</h2>
+        </div>
+        <div class="chart-container">
+          <canvas baseChart
+            [data]="barChartData"
+            [options]="barChartOptions"
+            type="bar">
+          </canvas>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot bill1"></span>
+            <span>Outstanding Bill 1</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot bill2"></span>
+            <span>Outstanding Bill 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tables Section -->
+    <div class="tables-grid">
+      <!-- Active SOs -->
+      <div class="table-card">
+        <h2>Active SOs</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let so of activeSOs">
+                <td>{{so.name}}</td>
+                <td>{{so.location}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Field Activities -->
+      <div class="table-card">
+        <div class="table-header">
+          <h2>Field Activities</h2>
+          <div class="view-selector">
+            <span>All view</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Time</th>
+                <th>Expenses</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let activity of fieldActivities">
+                <td>{{activity.name}}</td>
+                <td>{{activity.location}}</td>
+                <td>{{activity.time}}</td>
+                <td>{{activity.expenses}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

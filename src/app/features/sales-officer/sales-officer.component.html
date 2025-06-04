@@ -1,0 +1,96 @@
+<app-layout>
+  <div class="officer-details">
+    <div class="officer-header">
+      <div class="officer-avatar">{{ selectedOfficer.initials }}</div>
+      <div class="officer-info">
+        <div class="info-row">
+          <span class="label">Name</span>
+          <span class="value">{{ selectedOfficer.name }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Location</span>
+          <span class="value">{{ selectedOfficer.location }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Time</span>
+          <span class="value">{{ selectedOfficer.time }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <!-- Punch Logs -->
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-header">
+            <h3>Punch Logs</h3>
+            <a href="#" class="view-all">View All</a>
+          </div>
+          <div class="stat-value">
+            <span class="number">{{ stats.punchLogs.value }}</span>
+            <span class="unit">{{ stats.punchLogs.unit }}</span>
+          </div>
+        </div>
+        <div class="stat-icon punch">
+          <i [class]="stats.punchLogs.icon"></i>
+        </div>
+      </div>
+
+      <!-- KM Tracking -->
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-header">
+            <h3>KM Tracking</h3>
+            <span class="tracker-label">Tracker</span>
+          </div>
+          <div class="stat-value">
+            <span class="number">{{ stats.kmTracking.value }}</span>
+            <span class="unit">{{ stats.kmTracking.unit }}</span>
+          </div>
+        </div>
+        <div class="stat-icon tracking">
+          <i [class]="stats.kmTracking.icon"></i>
+        </div>
+      </div>
+
+      <!-- Visit Summary -->
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-header">
+            <h3>Visit Summary</h3>
+            <a href="#" class="view-all">View All</a>
+          </div>
+          <div class="stat-value">
+            <span class="number">{{ stats.visitSummary.value }}</span>
+          </div>
+        </div>
+        <div class="stat-icon visit">
+          <i [class]="stats.visitSummary.icon"></i>
+        </div>
+      </div>
+
+      <!-- Night Halt Log -->
+      <div class="stat-card">
+        <div class="stat-content">
+          <div class="stat-header">
+            <h3>Night Halt Log</h3>
+            <a href="#" class="view-all">View All</a>
+          </div>
+          <div class="stat-value">
+            <span class="number">{{ stats.nightHalt.value }}</span>
+            <span class="unit">{{ stats.nightHalt.unit }}</span>
+          </div>
+        </div>
+        <div class="stat-icon night">
+          <i [class]="stats.nightHalt.icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-section">
+      <h3>Map View</h3>
+      <google-map [center]="center" [zoom]="zoom" height="400px" width="100%">
+      </google-map>
+    </div>
+  </div>
+</app-layout>

@@ -1,0 +1,104 @@
+<div class="layout-container">
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" (click)="toggleSidebar()">
+    <i class="fas" [class.fa-bars]="!isSidebarOpen" [class.fa-times]="isSidebarOpen"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.show]="isSidebarOpen">
+    <div class="logo">
+      <img src="https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg" alt="Tech Kothari Logo">
+    </div>
+
+    <nav class="nav-menu">
+      <a [routerLink]="['/dashboard']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-th-large"></i>
+        <span>Dashboard</span>
+      </a>
+      <a [routerLink]="['/product-tree']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-th-large"></i>
+        <span>Product Tree</span>
+      </a>
+      <a [routerLink]="['/sales-officer']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-user-tie"></i>
+        <span>Sales Officer Tracker</span>
+      </a>
+      <a [routerLink]="['/inventory']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-boxes"></i>
+        <span>Inventory Management</span>
+      </a>
+      <a [routerLink]="['/orders']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Order Management</span>
+      </a>
+      <a [routerLink]="['/invoice']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-file-invoice"></i>
+        <span>Invoice Management</span>
+      </a>
+      <a [routerLink]="['/field-development']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-chart-line"></i>
+        <span>Field Development</span>
+      </a>
+      <a [routerLink]="['/add-order']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-plus-circle"></i>
+        <span>Add Order Page</span>
+      </a>
+      <a [routerLink]="['/inventory-view']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-eye"></i>
+        <span>Inventory View</span>
+      </a>
+      <a [routerLink]="['/field-develop-log']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-clipboard-list"></i>
+        <span>Field Develop Log</span>
+      </a>
+      <a [routerLink]="['/user-management']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-users-cog"></i>
+        <span>User Management</span>
+      </a>
+      <a [routerLink]="['/masters']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-cogs"></i>
+        <span>Masters</span>
+      </a>
+      <a [routerLink]="['/dealer-management']" routerLinkActive="active" class="nav-item" (click)="closeSidebar()">
+        <i class="fas fa-store"></i>
+        <span>Dealer Management</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>© 2025 TECH KOTHARI, Inc.</p>
+    </div>
+  </aside>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" [class.show]="isSidebarOpen" (click)="closeSidebar()"></div>
+
+  <!-- Main Content -->
+  <main class="main-content" [class.sidebar-open]="isSidebarOpen">
+    <!-- Header -->
+    <header class="header">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search documentation...">
+        <button>
+          <kbd>Ctrl</kbd> + <kbd>K</kbd>
+        </button>
+      </div>
+      <div class="header-actions">
+        <div class="notifications">
+          <i class="fas fa-bell"></i>
+          <span class="badge">2</span>
+        </div>
+        <div class="profile">
+          <img src="https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg" alt="Profile"
+            class="profile-image">
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <ng-content></ng-content>
+    </div>
+  </main>
+</div>

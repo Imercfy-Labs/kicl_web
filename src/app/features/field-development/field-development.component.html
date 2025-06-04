@@ -1,0 +1,64 @@
+<app-layout>
+  <div class="field-page">
+    <div class="page-header">
+      <h1>Field Development</h1>
+      <div class="view-selector">
+        <span>Stock view</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="field-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Village</th>
+            <th>Crop</th>
+            <th>Pest / Disease</th>
+            <th>Farmer Count</th>
+            <th>Climate</th>
+            <th>Image / Video</th>
+            <th>Summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let activity of activities">
+            <td>{{activity.date}}</td>
+            <td>{{activity.village}}</td>
+            <td>{{activity.crop}}</td>
+            <td>{{activity.pestDisease}}</td>
+            <td>{{activity.farmerCount}}</td>
+            <td>{{activity.climate}}</td>
+            <td>
+              <div class="file-thumbnail">
+                <img [src]="activity.imageVideo" [alt]="activity.crop">
+              </div>
+            </td>
+            <td>{{activity.summary}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-footer">
+        <div class="rows-per-page">
+          <span>Rows per page</span>
+          <select [(ngModel)]="rowsPerPage">
+            <option value="09">09</option>
+            <option value="18">18</option>
+            <option value="27">27</option>
+          </select>
+        </div>
+        <div class="pagination">
+          <span>Page {{currentPage}} of {{totalPages}}</span>
+          <div class="pagination-controls">
+            <button class="first-page"><i class="fas fa-angle-double-left"></i></button>
+            <button class="prev-page"><i class="fas fa-angle-left"></i></button>
+            <button class="next-page"><i class="fas fa-angle-right"></i></button>
+            <button class="last-page"><i class="fas fa-angle-double-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

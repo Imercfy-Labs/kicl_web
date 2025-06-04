@@ -1,0 +1,50 @@
+<app-layout>
+  <div class="add-order-page">
+    <div class="page-header">
+      <h1>Add Order</h1>
+    </div>
+
+    <div class="add-order-form">
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Dealer</label>
+            <select formControlName="dealer_id" class="form-control">
+              <option value="">Select Dealer</option>
+              <option value="1">NBA Company</option>
+              <option value="2">NFC Company</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Product</label>
+            <select formControlName="product_id" class="form-control">
+              <option value="">Select Product</option>
+              <option value="1">DAP</option>
+              <option value="2">Urea</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" formControlName="quantity" class="form-control" placeholder="Enter quantity">
+          </div>
+          <div class="form-group">
+            <label>Price per unit</label>
+            <input type="number" formControlName="price" class="form-control" placeholder="Enter price">
+          </div>
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+
+        <button type="submit" class="btn-submit" [disabled]="isSubmitting || orderForm.invalid">
+          {{ isSubmitting ? 'Creating Order...' : 'Create Order' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</app-layout>

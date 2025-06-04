@@ -1,0 +1,74 @@
+<app-layout>
+  <div class="inventory-view-page">
+    <div class="page-header">
+      <h1>Inventory View</h1>
+      <div class="view-selector">
+        <span>Stock view</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm"
+        placeholder="Search here for stock"
+        class="search-input">
+    </div>
+
+    <div class="table-container">
+      <table class="inventory-table">
+        <thead>
+          <tr>
+            <th>GRN No.</th>
+            <th>Date</th>
+            <th>Factory</th>
+            <th>Product</th>
+            <th>Batch No.</th>
+            <th>MFG/EXP</th>
+            <th>Quantity</th>
+            <th>HSN Code</th>
+            <th>Upload File</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of inventoryItems">
+            <td>{{item.grnNo}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.factory}}</td>
+            <td>{{item.product}}</td>
+            <td>{{item.batchNo}}</td>
+            <td>{{item.mfgExp}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.hsnCode}}</td>
+            <td>
+              <div class="file-thumbnail">
+                <img [src]="item.uploadFile" [alt]="item.product">
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-footer">
+        <div class="rows-per-page">
+          <span>Rows per page</span>
+          <select [(ngModel)]="rowsPerPage">
+            <option value="09">09</option>
+            <option value="18">18</option>
+            <option value="27">27</option>
+          </select>
+        </div>
+        <div class="pagination">
+          <span>Page {{currentPage}} of {{totalPages}}</span>
+          <div class="pagination-controls">
+            <button class="first-page"><i class="fas fa-angle-double-left"></i></button>
+            <button class="prev-page"><i class="fas fa-angle-left"></i></button>
+            <button class="next-page"><i class="fas fa-angle-right"></i></button>
+            <button class="last-page"><i class="fas fa-angle-double-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

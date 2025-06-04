@@ -1,0 +1,83 @@
+<app-layout>
+  <div class="orders-page">
+    <div class="page-header">
+      <h1>Order Management</h1>
+      <div class="filters">
+        <div class="date-filters">
+          <input 
+            type="date" 
+            [(ngModel)]="startDate" 
+            class="form-control"
+            placeholder="Start Date">
+          <input 
+            type="date" 
+            [(ngModel)]="endDate" 
+            class="form-control"
+            placeholder="End Date">
+        </div>
+        <button class="btn-apply" (click)="applyFilters()">Apply Filters</button>
+        <button class="btn-clear" (click)="clearFilters()">Clear</button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <div *ngIf="loading" class="loading">Loading orders...</div>
+      <div *ngIf="error" class="error-message">{{error}}</div>
+
+      <table *ngIf="!loading && !error" class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Dealer</th>
+            <th>Sales Officer</th>
+            <th>Products</th>
+            <th>Total Amount</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{order.order_id}}</td>
+            <td>{{order.created_at | date}}</td>
+            <td>{{order.dealer_name}}</td>
+            <td>{{order.sales_officer_name}}</td>
+            <td>
+              <div *ngFor="let product of order.products">
+                {{product.product_name}} - {{product.quantity}} units
+              </div>
+            </td>
+            <td>₹{{order.total_amount}}</td>
+            <td class="action-buttons">
+              <button class="btn-view">View</button>
+              <button class="btn-generate">Generate Invoice</button>
+            </td>
+          </tr>
+          <tr *ngIf="orders.length === 0">
+            <td colspan="7" class="no-data">No orders found</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-footer">
+        <div class="rows-per-page">
+          <span>Rows per page</span>
+          <select [(ngModel)]="rowsPerPage">
+            <option value="09">09</option>
+            <option value="18">18</option>
+            <option value="27">27</option>
+          </select>
+        </div>
+        <div class="pagination">
+          <span>Page {{currentPage}} of {{totalPages}}</span>
+          <div class="pagination-controls">
+            <button class="first-page"><i class="fas fa-angle-double-left"></i></button>
+            <button class="prev-page"><i class="fas fa-angle-left"></i></button>
+            <button class="next-page"><i class="fas fa-angle-right"></i></button>
+            <button class="last-page"><i class="fas fa-angle-double-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

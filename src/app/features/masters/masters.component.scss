@@ -1,0 +1,63 @@
+@import '../../../styles/variables.scss';
+
+.masters-page {
+  padding: calc(var(--spacer) * 4);
+}
+
+.page-header {
+  margin-bottom: calc(var(--spacer) * 4);
+
+  h1 {
+    font-size: 1.5rem;
+    color: var(--gray-900);
+    margin: 0;
+  }
+}
+
+.masters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: calc(var(--spacer) * 3);
+}
+
+.masters-card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: calc(var(--spacer) * 3);
+  text-decoration: none;
+  color: var(--gray-800);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: calc(var(--spacer) * 2);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacer);
+  }
+
+  p {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .masters-page {
+    padding: calc(var(--spacer) * 2);
+  }
+}
